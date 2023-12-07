@@ -89,6 +89,8 @@ def default_singer_decimal():
 def schema_for_column(c, config):
     """Returns the Schema object for the given Column."""
     data_type = c.data_type.lower()
+    
+LOGGER.info("DAAAAAAAAAAAAAAAAVID - Campo do tipo %s", data_type)
 
     inclusion = "available"
 
