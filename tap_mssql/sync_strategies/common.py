@@ -155,26 +155,32 @@ def row_to_singer_record(catalog_entry, version, row, columns, time_extracted, c
         property_type = catalog_entry.schema.properties[columns[idx]].type
         property_format = catalog_entry.schema.properties[columns[idx]].format
         if isinstance(elem, datetime.datetime):
-            row_to_persist += (elem.isoformat() + "+00:00",)
+            row_to_persist += (elem.isoformat(timespec='microseconds'),)
+            # row_to_persist += (elem.isoformat() + "+00:00",)
 
         elif isinstance(elem, datetime.time):
             if use_date_data_type_format:
                 # Writing Dates with a Date Datatype, not converting it to a datetime.
-                row_to_persist += (elem.isoformat(),)
+                row_to_persist += (elem.isoformat(timespec='microseconds'),)
+                # row_to_persist += (elem.isoformat(),)
             else:
-                row_to_persist += (elem.isoformat() + "+00:00",)
+                row_to_persist += (elem.isoformat(timespec='microseconds'),)
+                # row_to_persist += (elem.isoformat() + "+00:00",)
 
         elif isinstance(elem, datetime.date):
             if use_date_data_type_format:
                 # Writing Dates with a Date Datatype, not converting it to a datetime.
-                row_to_persist += (elem.isoformat(),)
+                row_to_persist += (elem.isoformat(timespec='microseconds'),)
+                # row_to_persist += (elem.isoformat(),)
             else:
-                row_to_persist += (elem.isoformat() + "T00:00:00+00:00",)
+                row_to_persist += (elem.isoformat(timespec='microseconds') + "T00:00:00",)
+                # row_to_persist += (elem.isoformat() + "T00:00:00+00:00",)
 
         elif isinstance(elem, datetime.timedelta):
             epoch = datetime.datetime.utcfromtimestamp(0)
             timedelta_from_epoch = epoch + elem
-            row_to_persist += (timedelta_from_epoch.isoformat() + "+00:00",)
+            row_to_persist += (timedelta_from_epoch.isoformat(timespec='microseconds'),)
+            # row_to_persist += (timedelta_from_epoch.isoformat() + "+00:00",)
 
         elif isinstance(elem, bytes):
             # for BIT value, treat 0 as False, 1 as True and anything else as hex
