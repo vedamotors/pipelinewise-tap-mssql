@@ -52,10 +52,10 @@ def sync_table(mssql_conn, config, catalog_entry, state, columns):
             params = {}
 
             if replication_key_value is not None:
-                if catalog_entry.schema.properties[replication_key_metadata].format == "date-time":
-                    LOGGER.info("Campo com erro é data")
+                tipo_data = catalog_entry.schema.properties[replication_key_metadata].format
+                LOGGER.info("tipo da data é:" {0}).format(tipo_data)
+                if catalog_entry.schema.properties[replication_key_metadata].format == "date-time":                    
                     replication_key_value = pendulum.parse(replication_key_value)
-                    LOGGER.info(replication_key_value)
 
                 select_sql += ' WHERE "{}" >= %(replication_key_value)s ORDER BY "{}" ASC'.format(
                     replication_key_metadata, replication_key_metadata
