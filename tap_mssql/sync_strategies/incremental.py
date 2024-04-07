@@ -56,10 +56,12 @@ def sync_table(mssql_conn, config, catalog_entry, state, columns):
                 if catalog_entry.schema.properties[replication_key_metadata].format == "date-time":  
                     # comentado pelo David
                     # replication_key_value = pendulum.parse(replication_key_value)
+                    LOGGER.info("Não é mais transformada a data")
 
                 select_sql += ' WHERE "{}" >= %(replication_key_value)s ORDER BY "{}" ASC'.format(
                     replication_key_metadata, replication_key_metadata
                 )
+                
                 LOGGER.info(f"Cláusula where gerada com stamp: {select_sql}")
 
                 params["replication_key_value"] = replication_key_value
