@@ -56,8 +56,8 @@ def sync_table(mssql_conn, config, catalog_entry, state, columns):
                 LOGGER.info(f"tipo da data é: {tipo_data}")
                 if catalog_entry.schema.properties[replication_key_metadata].format == "date-time":   
                     LOGGER.info(f"valor antes de parse: {replication_key_value}")
-                    replication_key_value = pendulum.parse(replication_key_value)
-                    LOGGER.info(f"valor depois de parse: {replication_key_value}")
+                    # replication_key_value = pendulum.parse(replication_key_value)
+                    # LOGGER.info(f"valor depois de parse: {replication_key_value}")
 
                 select_sql += ' WHERE "{}" >= %(replication_key_value)s ORDER BY "{}" ASC'.format(
                     replication_key_metadata, replication_key_metadata
