@@ -61,8 +61,6 @@ def sync_table(mssql_conn, config, catalog_entry, state, columns):
                 select_sql += ' WHERE "{}" >= %(replication_key_value)s ORDER BY "{}" ASC'.format(
                     replication_key_metadata, replication_key_metadata
                 )
-                
-                LOGGER.info(f"Cláusula where gerada com stamp: {select_sql}")
 
                 params["replication_key_value"] = replication_key_value
             elif replication_key_metadata is not None:
