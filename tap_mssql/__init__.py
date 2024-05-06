@@ -164,6 +164,7 @@ def schema_for_column(c, config):
         result.type = ["null", "object"]
 
     elif data_type in IMAGE_TYPES:
+        result.format = "image"
         result.type = ["null", "string"]
         result.contentEncoding = "base64"
         # When length is -1 it is a long column type
