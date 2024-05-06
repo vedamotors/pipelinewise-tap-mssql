@@ -167,20 +167,14 @@ def schema_for_column(c, config):
         result.type = ["null", "string"]
         result.format = "image"
         result.additionalProperties = {"sql_data_type": data_type}
-        # result.contentEncoding = "base64"
-        # When length is -1 it is a long column type
-        # https://docs.microsoft.com/en-us/sql/relational-databases/system-information-schema-views/columns-transact-sql?view=sql-server-ver15
-        # -1 is not valid JSON schema
-        # https://json-schema.org/understanding-json-schema/reference/string.html#length
-        #if c.character_maximum_length != -1:
-        #    result.maxLength = c.character_maximum_length
-
+        
     else:
         result = Schema(
             None,
             inclusion="unsupported",
             description="Unsupported column type",
         )
+        
     return result
 
 
