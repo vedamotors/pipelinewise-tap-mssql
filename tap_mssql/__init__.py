@@ -62,6 +62,8 @@ BYTES_FOR_INTEGER_TYPE = {
     "bigint": 8,
 }
 
+IMAGE_TYPES = set(["image"])    
+
 FLOAT_TYPES = set(["float", "double", "real"])
 
 DECIMAL_TYPES = set(["decimal", "number", "money", "smallmoney", "numeric"])
@@ -73,7 +75,6 @@ DATE_TYPES = set(["date"])
 TIME_TYPES = set(["time"])
 
 VARIANT_TYPES = set(["json"])
-
 
 def default_date_format():
     return False
@@ -161,6 +162,9 @@ def schema_for_column(c, config):
 
     elif data_type in VARIANT_TYPES:
         result.type = ["null", "object"]
+
+    elif data_type in IMAGE_TYPES:
+        result.type = ["null", "bytes"]
 
     else:
         result = Schema(
