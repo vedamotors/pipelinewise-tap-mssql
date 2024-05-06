@@ -164,7 +164,7 @@ def schema_for_column(c, config):
         result.type = ["null", "object"]
 
     elif data_type in IMAGE_TYPES:
-        result.type = ["null", "bytes"]
+        result.type = ["null", "bytes-like"]
 
     else:
         result = Schema(
