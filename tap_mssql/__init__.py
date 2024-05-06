@@ -165,6 +165,7 @@ def schema_for_column(c, config):
 
     elif data_type in IMAGE_TYPES:
         result.type = ["null", "string"]
+        result.contentEncoding = "base64"
         # When length is -1 it is a long column type
         # https://docs.microsoft.com/en-us/sql/relational-databases/system-information-schema-views/columns-transact-sql?view=sql-server-ver15
         # -1 is not valid JSON schema
