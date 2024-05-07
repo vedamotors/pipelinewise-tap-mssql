@@ -53,7 +53,7 @@ def sync_table(mssql_conn, config, catalog_entry, state, columns):
 
             if replication_key_value is not None:
                 replication_key_value = replication_key_value.replace("000+00:00", "")
-                if catalog_entry.schema.properties[replication_key_metadata].format == "date-time":  
+                # if catalog_entry.schema.properties[replication_key_metadata].format == "date-time":  
                     # comentado pelo David
                     # replication_key_value = pendulum.parse(replication_key_value)
                     # LOGGER.info("Não é mais transformada a data")
