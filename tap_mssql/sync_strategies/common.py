@@ -130,10 +130,12 @@ def prepare_columns_sql(catalog_entry, c):
                     else null end
                     """
             
-    if 'string' in schema_property.type and schema_property.format == 'image':
+    if 'string' in schema_property.type and schema_property.format == 'binary':
         if sql_data_type == 'image': 
             return f"""ISNULL(CAST(CAST({column_name} AS VARBINARY(8000)) AS VARCHAR(8000)),'')
                     """
+        elif sql_data_type == 'varbinay': 
+            return f"""ISNULL(CAST(CAST({column_name} AS VARBINARY(8000)) AS VARCHAR(8000)),'')
             
     return column_name
 
