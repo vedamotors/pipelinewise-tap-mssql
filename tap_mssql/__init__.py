@@ -62,7 +62,7 @@ BYTES_FOR_INTEGER_TYPE = {
     "bigint": 8,
 }
 
-IMAGE_TYPES = set(["image"])    
+IMAGE_TYPES = set(["image","varbinary"])    
 
 FLOAT_TYPES = set(["float", "double", "real"])
 
