@@ -165,7 +165,7 @@ def schema_for_column(c, config):
 
     elif data_type in IMAGE_TYPES:
         result.type = ["null", "string"]
-        result.format = "image"
+        result.format = "binary"
         result.additionalProperties = {"sql_data_type": data_type}
         
     else:
